@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Tip calculator app</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="logo">
+    <img src="images/logo.svg" alt="">
+  </div>
+  <div class="wrapper">
+    <div class="card">
+      <main>
+        <div class="card-left-part">
+          <div class="top-bill">
+            <p class="tag-name">Bill</p>
+            <div class="left-part-input">
+              <i><img src="images/icon-dollar.svg" alt="" width="16"></i>
+              <input type="text" placeholder="0" class="left-part-input number" id="billInput">
+              <p class="error">Please write number!</p>
+            </div>
+             
+          </div>
+
+          <div class="main-select-tip">
+            <p class="tag-name">Select Tip %</p>
+            <div class="percent-buttons">
+              <button class="tip-button" value="5">5%</button>
+              <button class="tip-button" value="10">10%</button>
+              <button class="tip-button" value="15">15%</button>
+              <button class="tip-button" value="25">25%</button>
+              <button class="tip-button" value="50">50%</button>
+              <input class="tip-button custom" placeholder="custom" id="customInput">
+            </div>
+            
+          </div>
+
+          <div class="bottom-people-number">
+            <p class="tag-name">Number of People</p>
+            <div class="left-part-input">
+              <i><img src="images/icon-person.svg" alt="" width="16"></i>
+              <input type="text" placeholder="0" class="left-part-input number" id="peopleInput">
+              <p class="error">Please write a number!</p>
+            </div>
+         
+          </div>
+        </div>
+
+        <div class="card-right-part">
+          <div class="amount-tip right-part-flex">
+            <div class="description">
+              <h6>Tip Amount</h6>
+              <p>/person</p>
+            </div>
+
+            <h1 class="number">$0</h1>
+          </div>
+
+          <div class="total right-part-flex">
+            <div class="description">
+              <h6>Total</h6>
+              <p>/person</p>
+            </div>
+
+            <h1 class="number">$0</h1>
+          </div>
+
+          <button class="reset-button">Reset</button>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
