@@ -32,7 +32,7 @@ peopleInput.addEventListener('input', () => {
         error[1].style.display = 'block'
     } else {
         numbers[3].innerHTML = `
-        ${parseFloat(content / peopleInput.value).toFixed(2)}
+        $${parseFloat(content / peopleInput.value).toFixed(2)}
         `
         error[1].style.display = 'none'
     }
