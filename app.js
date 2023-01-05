@@ -25,14 +25,14 @@ tipButtons.forEach((item) => {
 })
 
 
-const correct = /[abcdefghijklmnopqrstuvwxyz]/
+const correct = /[abcdefghijklmnopqrstuvwxyz?/!@#$$%^&*()_+=|]/
 
 peopleInput.addEventListener('input', () => {
     if (peopleInput.value.match(correct)) {
         error[1].style.display = 'block'
     } else {
         numbers[3].innerHTML = `
-        ${parseFloat(content / peopleInput.value)}
+        ${parseFloat(content / peopleInput.value).toFixed(2)}
         `
         error[1].style.display = 'none'
     }
