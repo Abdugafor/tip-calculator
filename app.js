@@ -1,59 +1,65 @@
-const tipButtons = document.querySelectorAll('.tip-button')
-const peopleInput = document.querySelector('#peopleInput'),
-      customInput = document.querySelector('#customInput'),
-      resetButton = document.querySelector('.reset-button'),
-      numbers = document.querySelectorAll('.number'),
+const percents = document.querySelectorAll('.tip-button'),
+      peopleTip = document.querySelector('#peopleInput'),
+      customPercent = document.querySelector('#customInput'),
+      resetBtn = document.querySelector('.reset-button'),
+      tip = document.querySelectorAll('.number'),
       billInput = document.querySelector('#billInput'),
-      inputs = document.getElementsByTagName('input'),
-      error = document.querySelectorAll('.error')
+      warning = document.querySelectorAll('.error')
 
 let content = 0
-tipButtons.forEach((item) => {
-    item.addEventListener('click', function() {
-        tipButtons.forEach(tipButtons=>tipButtons.classList.remove("active"))
-        if (billInput.value == '' || billInput.value.match(correct)) { 
-            error[0].style.display = 'block'
-        }else {
-            this.classList.add("active")
-            numbers[2].innerHTML = `
-                ${(parseFloat(billInput.value) * parseFloat(item.value) / 100).toFixed(2)}
-            `
-            content = parseFloat(numbers[2].innerHTML) 
-            error[0].style.display = 'none'
-        }
-    })
+const error = /[abcdefghijklmnopqrstuvwxyz?/!@#$$%^&*()_+=|]/
+
+percents.forEach((item) => { item.addEventListener('click', () => calcTip(item))})
+
+peopleTip.addEventListener('input', calcPerson)
+resetBtn.addEventListener('click', resetAll)
+customPercent.addEventListener('input', () => {
+    tip[2].innerHTML = `
+        ${billInput.value / customPercent.value}
+    `
 })
 
+function calcTip(tips) {
 
-const correct = /[abcdefghijklmnopqrstuvwxyz?/!@#$$%^&*()_+=|]/
+    const bill = billInput.value
 
-peopleInput.addEventListener('input', () => {
-    if (peopleInput.value.match(correct)) {
-        error[1].style.display = 'block'
-    } else {
-        numbers[3].innerHTML = `
-        $${parseFloat(content / peopleInput.value).toFixed(2)}
+    percents.forEach(percents=>percents.classList.remove("active"))
+
+    if (bill == '' || bill.match(error)) { 
+        warning[0].style.display = 'block'
+    }else {
+        tips.classList.add("active")
+        tip[2].innerHTML = `
+            ${(parseFloat(bill) * parseFloat(tips.value) / 100).toFixed(2)}
         `
-        error[1].style.display = 'none'
+        content = parseFloat(tip[2].innerHTML) 
+        warning[0].style.display = 'none'
     }
+}  
+
+function calcPerson() {
+    const people = peopleTip.value
     
-})
-resetButton.addEventListener('click', () => {
-    numbers.forEach(number => {
+    if (people.match(error)) {
+        warning[1].style.display = 'block'
+    } else {
+        tip[3].innerHTML = `
+        $${parseFloat(content / people).toFixed(2)}
+        `
+        warning[1].style.display = 'none'
+    }
+}
+
+function resetAll() {
+    tip.forEach(number => {
         number.value = ''
     })
 
-    tipButtons.forEach(item => {
+    percents.forEach(item => {
         item.classList.remove('active')
     })
 
-    numbers[2].innerHTML = '$0'
-    numbers[3].innerHTML = '$0'
-})
-
-customInput.addEventListener('input', () => {
-    numbers[2].innerHTML = `
-        ${billInput.value / customInput.value}
-    `
-})
+    tip[2].innerHTML = '$0'
+    tip[3].innerHTML = '$0'
+}
 
