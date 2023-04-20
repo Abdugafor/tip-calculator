@@ -157,6 +157,10 @@ button:hover{
     border-radius: 5px;
 }
 
+#customInput::placeholder {
+    color: var(--Light--grayish--cyan);
+    font-size: 19px;
+}
 @media (max-width: 800px) {
 
     body {

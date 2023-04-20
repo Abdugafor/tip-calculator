@@ -12,18 +12,28 @@ const error = /[abcdefghijklmnopqrstuvwxyz?/!@#$$%^&*()_+=|]/
 percents.forEach((item) => { item.addEventListener('click', () => calcTip(item))})
 
 peopleTip.addEventListener('input', calcPerson)
+
 resetBtn.addEventListener('click', resetAll)
-customPercent.addEventListener('input', () => {
-    tip[2].innerHTML = `
-        ${billInput.value / customPercent.value}
-    `
+
+customPercent.addEventListener('change', () => { 
+    tip[2].innerHTML = customCalc()
 })
+
+function customCalc() {
+    const res = `${billInput.value / customPercent.value}`
+
+    if (res == NaN) {
+        return 0
+    }
+
+    return res
+}
 
 function calcTip(tips) {
 
     const bill = billInput.value
 
-    percents.forEach(percents=>percents.classList.remove("active"))
+    percents.forEach(percents => percents.classList.remove("active"))
 
     if (bill == '' || bill.match(error)) { 
         warning[0].style.display = 'block'
